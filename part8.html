@@ -88,17 +88,22 @@
 
         stars = this.physics.add.group({
           key: "star",
-          repeat: 11,
-          setXY: { x: 12, y: 0, stepX: 70 },
+          // 기본으로 별 한개가 있고, repeat 1 부터 하나씩 추가
+          repeat: 11, // 총 12개의 별
+          // Each child will be placed starting at x: 12, y: 0 and with an x step of 70
+          setXY: { x: 12, y: 0, stepX: 70 }, // set the position of the 12 children the Group creates
         });
 
         stars.children.iterate(function (child) {
-          child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+          child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.5));
         });
 
+        // player, stars를 platform (초록 바닥) 위에 놓을 수 있도록 collider 설정
         this.physics.add.collider(player, platforms);
         this.physics.add.collider(stars, platforms);
 
+        // check to see if the player overlaps with a star or not
+        // 만약 star, player가 겹치면 collectStar 함수를 호출해서 별 모양을 숨김
         this.physics.add.overlap(player, stars, collectStar, null, this);
       }
 

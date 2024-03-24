@@ -34,6 +34,7 @@
       var stars;
       var platforms;
       var cursors;
+      // 별 획득 스코어 변수 선언
       var score = 0;
       var scoreText;
 
@@ -98,9 +99,10 @@
           child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
         });
 
-        scoreText = this.add.text(16, 16, "score: 0", {
+        // 16, 16은 스코어 텍스트를 보여줄 좌표 위치
+        scoreText = this.add.text(16, 16, "Score: " + score, {
           fontSize: "32px",
-          fill: "#000",
+          fill: "#fff",
         });
 
         this.physics.add.collider(player, platforms);

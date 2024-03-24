@@ -60,7 +60,7 @@
 
         player = this.physics.add.sprite(100, 450, "dude");
 
-        player.setBounce(0.2);
+        player.setBounce(0.4);
         player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -89,6 +89,7 @@
       }
 
       function update() {
+        // control left, right cursor
         if (cursors.left.isDown) {
           player.setVelocityX(-160);
 
@@ -102,7 +103,7 @@
 
           player.anims.play("turn");
         }
-
+        // control up cursor
         if (cursors.up.isDown && player.body.touching.down) {
           player.setVelocityY(-330);
         }
